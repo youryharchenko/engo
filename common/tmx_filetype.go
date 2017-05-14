@@ -5,7 +5,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	"engo.io/engo"
+	"github.com/youryharchenko/engo"
 )
 
 // TMXResource contains a level created from a Tile Map XML

@@ -5,7 +5,7 @@ package common
 import (
 	"io"
 
-	"engo.io/ecs"
+	"github.com/youryharchenko/ecs"
 )
 
 const (

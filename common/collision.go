@@ -3,9 +3,9 @@ package common
 import (
 	"log"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/math"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/math"
 )
 
 type SpaceComponent struct {

@@ -6,9 +6,9 @@ import (
 	"math/rand"
 	"time"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/common"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/common"
 )
 
 var (

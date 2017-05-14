@@ -12,8 +12,8 @@ import (
 	"strconv"
 	"time"
 
-	"engo.io/gl"
 	"github.com/gopherjs/gopherjs/js"
+	"github.com/youryharchenko/gl"
 	"honnef.co/go/js/dom"
 	"honnef.co/go/js/xhr"
 )
@@ -162,7 +162,7 @@ func CanvasHeight() float32 {
 }
 
 func CanvasScale() float32 {
-	return CanvasWidth()/WindowWidth()
+	return CanvasWidth() / WindowWidth()
 }
 
 func toPx(n int) string {

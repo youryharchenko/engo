@@ -3,8 +3,8 @@ package common
 import (
 	"log"
 
-	"engo.io/engo"
-	"engo.io/gl"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 )
 
 // Spritesheet is a class that stores a set of tiles from a file, used by tilemaps and animations

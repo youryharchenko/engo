@@ -1,8 +1,8 @@
 package common
 
 import (
-	"engo.io/engo"
-	"engo.io/gl"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 )
 
 // Level is a parsed TMX level containing all layers and default Tiled attributes

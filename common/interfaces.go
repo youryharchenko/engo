@@ -10,7 +10,7 @@
 // Note: The names have not been contracted for consistency, the interface is *Collisionable* not *Collidable*
 package common
 
-import "engo.io/ecs"
+import "github.com/youryharchenko/ecs"
 
 // Getters
 

@@ -5,9 +5,9 @@ package common
 import (
 	"testing"
 
-	"engo.io/ecs"
-	"engo.io/engo"
 	"github.com/stretchr/testify/assert"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
 )
 
 // TestShadersInitialization tests whether all registered `Shader`s will `Setup` without any errors

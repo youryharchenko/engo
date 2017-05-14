@@ -8,10 +8,10 @@ import (
 	"io/ioutil"
 	"log"
 
-	"engo.io/engo"
-	"engo.io/gl"
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
 )

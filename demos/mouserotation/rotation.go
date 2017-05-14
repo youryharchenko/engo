@@ -3,10 +3,10 @@ package main
 import (
 	"image/color"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/common"
-	"engo.io/engo/demos/demoutils"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/common"
+	"github.com/youryharchenko/engo/demos/demoutils"
 )
 
 type DefaultScene struct{}

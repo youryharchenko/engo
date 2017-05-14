@@ -5,9 +5,9 @@ import (
 	"io"
 	"io/ioutil"
 
-	"engo.io/engo"
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
+	"github.com/youryharchenko/engo"
 )
 
 // FontResource is a wrapper for `*truetype.Font` which is being passed by the the `engo.Files.Resource` method in the

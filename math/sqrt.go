@@ -3,7 +3,7 @@
 package math
 
 import (
-	engomath "github.com/engoengine/math"
+	engomath "github.com/youryharchenko/math"
 )
 
 // Sqrt returns the square root of x.

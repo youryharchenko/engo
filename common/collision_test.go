@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"engo.io/engo"
 	"github.com/stretchr/testify/assert"
+	"github.com/youryharchenko/engo"
 )
 
 func TestSpaceComponent_Contains(t *testing.T) {

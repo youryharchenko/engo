@@ -8,7 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	"engo.io/engo"
+	"github.com/youryharchenko/engo"
 )
 
 // AudioResource is a wrapper for `*Player` which is being passed by the the `engo.Files.Resource` method in the

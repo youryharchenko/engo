@@ -1,10 +1,10 @@
-package engo // import "engo.io/engo"
+package engo // import "github.com/youryharchenko/engo"
 
 import (
 	"fmt"
 	"log"
 
-	"engo.io/ecs"
+	"github.com/youryharchenko/ecs"
 )
 
 var (

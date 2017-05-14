@@ -4,9 +4,9 @@ import (
 	"image/color"
 	"log"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/common"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/common"
 )
 
 var (
@@ -155,7 +155,7 @@ func (scene *DefaultScene) Setup(w *ecs.World) {
 	spriteSheet := common.NewSpritesheetFromFile(model, width, height)
 
 	hero := scene.CreateHero(
-		engo.Point{engo.CanvasWidth() / 2, engo.CanvasHeight() / 2},
+		engo.Point{X: engo.CanvasWidth() / 2, Y: engo.CanvasHeight() / 2},
 		spriteSheet,
 	)
 
@@ -210,7 +210,7 @@ func (scene *DefaultScene) Setup(w *ecs.World) {
 				tile := &Tile{BasicEntity: ecs.NewBasic()}
 				tile.RenderComponent = common.RenderComponent{
 					Drawable: tileElement,
-					Scale:    engo.Point{1, 1},
+					Scale:    engo.Point{X: 1, Y: 1},
 				}
 				tile.SpaceComponent = common.SpaceComponent{
 					Position: tileElement.Point,
@@ -238,7 +238,7 @@ func (scene *DefaultScene) Setup(w *ecs.World) {
 				tile := &Tile{BasicEntity: ecs.NewBasic()}
 				tile.RenderComponent = common.RenderComponent{
 					Drawable: imageElement,
-					Scale:    engo.Point{1, 1},
+					Scale:    engo.Point{X: 1, Y: 1},
 				}
 				tile.SpaceComponent = common.SpaceComponent{
 					Position: imageElement.Point,
@@ -283,14 +283,14 @@ func (scene *DefaultScene) Setup(w *ecs.World) {
 	// Setup character and movement
 	engo.Input.RegisterAxis(
 		"vertical",
-		engo.AxisKeyPair{engo.ArrowUp, engo.ArrowDown},
-		engo.AxisKeyPair{engo.W, engo.S},
+		engo.AxisKeyPair{Min: engo.ArrowUp, Max: engo.ArrowDown},
+		engo.AxisKeyPair{Min: engo.W, Max: engo.S},
 	)
 
 	engo.Input.RegisterAxis(
 		"horizontal",
-		engo.AxisKeyPair{engo.ArrowLeft, engo.ArrowRight},
-		engo.AxisKeyPair{engo.A, engo.D},
+		engo.AxisKeyPair{Min: engo.ArrowLeft, Max: engo.ArrowRight},
+		engo.AxisKeyPair{Min: engo.A, Max: engo.D},
 	)
 
 	// Add EntityScroller System
@@ -312,7 +312,7 @@ func (*DefaultScene) CreateHero(point engo.Point, spriteSheet *common.Spriteshee
 	}
 	hero.RenderComponent = common.RenderComponent{
 		Drawable: spriteSheet.Cell(0),
-		Scale:    engo.Point{1, 1},
+		Scale:    engo.Point{X: 1, Y: 1},
 	}
 
 	hero.SpeedComponent = SpeedComponent{}
@@ -344,38 +344,45 @@ type speedEntity struct {
 }
 
 type SpeedSystem struct {
-	entities []speedEntity
+	//entities []speedEntity
+	entities map[uint64]speedEntity
 }
 
 func (s *SpeedSystem) New(*ecs.World) {
+	s.entities = map[uint64]speedEntity{}
 	engo.Mailbox.Listen(SPEED_MESSAGE, func(message engo.Message) {
 		speed, isSpeed := message.(SpeedMessage)
 		if isSpeed {
 			log.Printf("%#v\n", speed.Point)
-			for _, e := range s.entities {
-				if e.ID() == speed.BasicEntity.ID() {
-					e.SpeedComponent.Point = speed.Point
-				}
+			//for _, e := range s.entities {
+			//	if e.ID() == speed.BasicEntity.ID() {
+			//		e.SpeedComponent.Point = speed.Point
+			//	}
+			//}
+			if e, ok := s.entities[speed.BasicEntity.ID()]; ok {
+				e.SpeedComponent.Point = speed.Point
 			}
 		}
 	})
 }
 
 func (s *SpeedSystem) Add(basic *ecs.BasicEntity, speed *SpeedComponent, space *common.SpaceComponent) {
-	s.entities = append(s.entities, speedEntity{basic, speed, space})
+	//s.entities = append(s.entities, speedEntity{basic, speed, space})
+	s.entities[basic.ID()] = speedEntity{basic, speed, space}
 }
 
 func (s *SpeedSystem) Remove(basic ecs.BasicEntity) {
-	delete := -1
-	for index, e := range s.entities {
-		if e.BasicEntity.ID() == basic.ID() {
-			delete = index
-			break
-		}
-	}
-	if delete >= 0 {
-		s.entities = append(s.entities[:delete], s.entities[delete+1:]...)
-	}
+	//delete := -1
+	//for index, e := range s.entities {
+	//	if e.BasicEntity.ID() == basic.ID() {
+	//		delete = index
+	//		break
+	//	}
+	//}
+	//if delete >= 0 {
+	//	s.entities = append(s.entities[:delete], s.entities[delete+1:]...)
+	//}
+	delete(s.entities, basic.ID())
 }
 
 func (s *SpeedSystem) Update(dt float32) {
@@ -411,24 +418,31 @@ type controlEntity struct {
 }
 
 type ControlSystem struct {
-	entities []controlEntity
+	//entities []controlEntity
+	entities map[uint64]controlEntity
+}
+
+func (c *ControlSystem) New(*ecs.World) {
+	c.entities = map[uint64]controlEntity{}
 }
 
 func (c *ControlSystem) Add(basic *ecs.BasicEntity, anim *common.AnimationComponent, control *ControlComponent, space *common.SpaceComponent) {
-	c.entities = append(c.entities, controlEntity{basic, anim, control, space})
+	//c.entities = append(c.entities, controlEntity{basic, anim, control, space})
+	c.entities[basic.ID()] = controlEntity{basic, anim, control, space}
 }
 
 func (c *ControlSystem) Remove(basic ecs.BasicEntity) {
-	delete := -1
-	for index, e := range c.entities {
-		if e.BasicEntity.ID() == basic.ID() {
-			delete = index
-			break
-		}
-	}
-	if delete >= 0 {
-		c.entities = append(c.entities[:delete], c.entities[delete+1:]...)
-	}
+	//delete := -1
+	//for index, e := range c.entities {
+	//	if e.BasicEntity.ID() == basic.ID() {
+	//		delete = index
+	//		break
+	//	}
+	//}
+	//if delete >= 0 {
+	//	c.entities = append(c.entities[:delete], c.entities[delete+1:]...)
+	//}
+	delete(c.entities, basic.ID())
 }
 
 func setAnimation(e controlEntity) {

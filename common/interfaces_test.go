@@ -5,7 +5,7 @@ package common
 import (
 	"testing"
 
-	"engo.io/ecs"
+	"github.com/youryharchenko/ecs"
 )
 
 // SafeBasic is to provide a BasicEntity until ecs is updated to provide the GetBasicEntity method

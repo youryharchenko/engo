@@ -4,10 +4,10 @@ import (
 	"image/color"
 	"log"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/common"
-	"engo.io/engo/math"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/common"
+	"github.com/youryharchenko/engo/math"
 )
 
 type Guy struct {

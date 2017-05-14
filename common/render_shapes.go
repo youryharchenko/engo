@@ -3,8 +3,8 @@ package common
 import (
 	"image/color"
 
-	"engo.io/engo"
-	"engo.io/gl"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 )
 
 type TriangleType uint8

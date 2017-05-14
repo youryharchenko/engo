@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/engo/math"
 	"github.com/go-gl/mathgl/mgl32"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/engo/math"
 )
 
 const (

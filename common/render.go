@@ -5,10 +5,11 @@ import (
 	"image/color"
 	"sort"
 
-	"engo.io/ecs"
-	"engo.io/engo"
-	"engo.io/gl"
 	"sync"
+
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 )
 
 const (
@@ -119,6 +120,7 @@ func (rs *RenderSystem) New(w *ecs.World) {
 }
 
 var cameraInitMutex sync.Mutex
+
 func addCameraSystemOnce(w *ecs.World) {
 	cameraInitMutex.Lock()
 	defer cameraInitMutex.Unlock()

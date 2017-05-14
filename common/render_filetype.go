@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"image"
 	"image/draw"
+	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png"
-	_ "image/gif"
 	"io"
 
-	"engo.io/engo"
-	"engo.io/gl"
+	"github.com/youryharchenko/engo"
+	"github.com/youryharchenko/gl"
 )
 
 type TextureResource struct {

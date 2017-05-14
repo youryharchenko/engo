@@ -2,21 +2,21 @@ package common
 
 import (
 	"bytes"
-	"compress/zlib"
 	"compress/gzip"
+	"compress/zlib"
 	"encoding/base64"
-	"encoding/csv"
 	"encoding/binary"
+	"encoding/csv"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"path"
 	"sort"
 	"strconv"
 	"strings"
-	"errors"
 
-	"engo.io/engo"
+	"github.com/youryharchenko/engo"
 )
 
 // TMXTilesetSrc is just used to create levelTileset->Image
@@ -127,7 +127,7 @@ func (d *TMXData) decodeCSV() ([]uint32, error) {
 }
 
 // Decode takes the encoded data from a tmx map file and
-// unpacks it an arrary of uint32 guids 
+// unpacks it an arrary of uint32 guids
 func (d *TMXData) Decode() ([]uint32, error) {
 	// Tile tag and CSV encodings
 	if len(d.Tiles) > 0 {

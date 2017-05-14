@@ -6,8 +6,8 @@ import (
 	"io"
 	"log"
 
-	"engo.io/ecs"
-	"engo.io/engo"
+	"github.com/youryharchenko/ecs"
+	"github.com/youryharchenko/engo"
 	"golang.org/x/mobile/exp/audio/al"
 )
 

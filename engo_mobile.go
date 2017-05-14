@@ -9,7 +9,7 @@ import (
 	"strings"
 	"syscall"
 
-	"engo.io/gl"
+	"github.com/youryharchenko/gl"
 	"golang.org/x/mobile/app"
 	"golang.org/x/mobile/asset"
 	"golang.org/x/mobile/event/lifecycle"
@@ -70,7 +70,7 @@ func CanvasHeight() float32 {
 }
 
 func CanvasScale() float32 {
-	return CanvasWidth()/WindowWidth()
+	return CanvasWidth() / WindowWidth()
 }
 
 func DestroyWindow() { /* nothing to do here? */ }

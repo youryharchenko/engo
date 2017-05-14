@@ -3,7 +3,7 @@ package engo
 import (
 	"fmt"
 
-	"engo.io/ecs"
+	"github.com/youryharchenko/ecs"
 )
 
 var scenes = make(map[string]*sceneWrapper)
@@ -78,7 +78,7 @@ func SetScene(s Scene, forceNewWorld bool) {
 	var doSetup bool
 
 	if wrapper.world == nil || forceNewWorld {
-		wrapper.world = &ecs.World{}
+		wrapper.world = ecs.NewWorld() //&ecs.World{systems: }
 		wrapper.mailbox = &MessageManager{}
 
 		doSetup = true
